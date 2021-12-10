@@ -17,7 +17,8 @@ export default {
     },
   },
   data: () => ({
-    innerValue: "",
+    innerValue: null,
+    firstTime: true,
   }),
   methods: {
     //picked this up from https://codepen.io/559wade/pen/LRzEjj
@@ -63,6 +64,7 @@ export default {
           input_val += ".00";
         }
       }
+
       return input_val;
     },
     formatCurrency(input) {
@@ -91,17 +93,19 @@ export default {
     value: {
       handler(newValue) {
         if (this.value) {
-          this.innerValue = this.doFormat(newValue);
+          this.innerValue = this.doFormat(
+            newValue,
+            this.firstTime ? "blur" : null
+          );
         }
+        this.firstTime = false;
       },
+      immediate: true,
     },
     innerValue(newVal) {
       if (newVal) this.$emit("input", parseFloat(newVal.replace(/,/g, "")));
       else this.$emit("input", null);
     },
-  },
-  created() {
-    this.innerValue = this.doFormat(this.value, "blur");
   },
 };
 </script>
