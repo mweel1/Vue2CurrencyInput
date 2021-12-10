@@ -19,6 +19,7 @@ export default {
   data: () => ({
     innerValue: null,
     firstTime: true,
+    firstEmit: true,
   }),
   methods: {
     //picked this up from https://codepen.io/559wade/pen/LRzEjj
@@ -103,6 +104,11 @@ export default {
       immediate: true,
     },
     innerValue(newVal) {
+      if (newVal && this.firstEmit) {
+        this.firstEmit = false;
+        return;
+      }
+
       if (newVal) this.$emit("input", parseFloat(newVal.replace(/,/g, "")));
       else this.$emit("input", null);
     },
