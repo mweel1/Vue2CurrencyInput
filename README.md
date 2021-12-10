@@ -1,4 +1,4 @@
-# vue2-currency-input
+# Vue 2 Currency Input
 
 Vue 2.x input component that formats numbers into USD currency as the user types.
 
