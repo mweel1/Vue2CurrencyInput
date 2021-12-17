@@ -21,6 +21,9 @@ export default {
     firstTime: true,
     firstEmit: true,
   }),
+  mounted() {
+    this.innerValue = this.doFormat(this.value, "blur");
+  },
   methods: {
     //picked this up from https://codepen.io/559wade/pen/LRzEjj
 
@@ -92,25 +95,11 @@ export default {
   watch: {
     // Handles internal model changes.
     value: {
-      handler(newValue) {
-        if (this.value) {
-          this.innerValue = this.doFormat(
-            newValue,
-            this.firstTime ? "blur" : null
-          );
-        }
-        this.firstTime = false;
-      },
+      handler(newValue) {},
       immediate: true,
     },
     innerValue(newVal) {
-      if (newVal && this.firstEmit) {
-        this.firstEmit = false;
-        return;
-      }
-
-      if (newVal) this.$emit("input", parseFloat(newVal.replace(/,/g, "")));
-      else this.$emit("input", null);
+      this.$emit("input", parseFloat(newVal.replace(/,/g, "")));
     },
   },
 };

@@ -8,7 +8,7 @@ export default Vue.extend({
     CurrencyInput,
   },
   data: () => ({
-    innerValue: 12,
+    innerValue: 123223.1,
   }),
 });
 </script>
