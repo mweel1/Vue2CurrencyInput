@@ -9,6 +9,7 @@ export default Vue.extend({
   },
   data: () => ({
     innerValue: 123223.1,
+    innerValue2: 12.1,
   }),
 });
 </script>
@@ -17,5 +18,6 @@ export default Vue.extend({
   <div id="app">
     <currency-input v-model="innerValue" />
     {{ innerValue }}
+    <hr />
   </div>
 </template>

@@ -99,7 +99,8 @@ export default {
       immediate: true,
     },
     innerValue(newVal) {
-      this.$emit("input", parseFloat(newVal.replace(/,/g, "")));
+      this.$emit("input", newVal);
+      this.$emit("asFloat", parseFloat(newVal.replace(/,/g, "")));
     },
   },
 };
