@@ -1,23 +1,24 @@
 <script>
 import Vue from "vue";
 import CurrencyInput from "@/currency-input.vue";
-
+import In from "./in.vue";
 export default Vue.extend({
   name: "ServeDev",
   components: {
     CurrencyInput,
+    In,
   },
   data: () => ({
-    innerValue: 123223.1,
-    innerValue2: 12.1,
+    innerValue2: null,
   }),
 });
 </script>
 
 <template>
   <div id="app">
-    <currency-input v-model="innerValue" />
-    {{ innerValue }}
+    <In v-model="innerValue2"></In>
+    {{ innerValue2 }}
+
     <hr />
   </div>
 </template>

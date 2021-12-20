@@ -12,17 +12,24 @@
 export default {
   name: "CurrencyInput",
   props: {
-    value: {
-      type: null,
-    },
+    value: null,
   },
   data: () => ({
     innerValue: null,
-    firstTime: true,
-    firstEmit: true,
   }),
-  mounted() {
-    this.innerValue = this.doFormat(this.value, "blur");
+  created() {
+    if (this.value == "" || this.value == 0) {
+      this.innerValue = null;
+      return;
+    } else {
+      this.innerValue = this.doFormat(this.value, "blur");
+    }
+  },
+  watch: {
+    innerValue(newVal) {
+      if (newVal == null || newVal === "") this.$emit("input", 0);
+      else this.$emit("input", parseFloat(newVal.replace(/,/g, "")));
+    },
   },
   methods: {
     //picked this up from https://codepen.io/559wade/pen/LRzEjj
@@ -32,6 +39,8 @@ export default {
       return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
     doFormat(input_val, type) {
+      if (input_val == null || input_val == undefined) return;
+
       input_val = input_val.toString();
       if (input_val.indexOf(".") >= 0) {
         // get position of first decimal
@@ -90,17 +99,6 @@ export default {
         caret_pos = updated_len - original_len + caret_pos;
         input.srcElement.setSelectionRange(caret_pos, caret_pos);
       });
-    },
-  },
-  watch: {
-    // Handles internal model changes.
-    value: {
-      handler(newValue) {},
-      immediate: true,
-    },
-    innerValue(newVal) {
-      this.$emit("input", newVal);
-      this.$emit("asFloat", parseFloat(newVal.replace(/,/g, "")));
     },
   },
 };

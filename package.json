@@ -1,6 +1,6 @@
 {
   "name": "vue2-currency-input",
-  "version": "1.0.12",
+  "version": "1.0.17",
   "description": "",
   "main": "dist/currency-input.ssr.js",
   "browser": "dist/currency-input.esm.js",
