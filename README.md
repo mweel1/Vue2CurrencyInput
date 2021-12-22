@@ -48,4 +48,6 @@ This component only formats to US currency.
 
 It will take a string or number and always returns a float
 
+If the string is empty a 0.00 will be returned
+
 Released under the MIT [License](./LICENSE).
