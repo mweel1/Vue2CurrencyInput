@@ -29,8 +29,8 @@ export default {
   watch: {
     // I have to do this because I emit a float and the format would be wrong otherwise
     setNewValue(newVal) {
-      if (newVal == null || newVal === "") this.$emit("input", 0);
-      else this.$emit("input", parseFloat(newVal.replace(/,/g, "")));
+      this.setNewValue = newVal;
+      this.innerValue = this.doFormat(newVal, "blur");
     },
     innerValue(newVal) {
       if (newVal == null || newVal === "") this.$emit("input", 0);
