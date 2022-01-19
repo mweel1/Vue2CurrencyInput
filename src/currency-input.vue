@@ -99,11 +99,11 @@ export default {
       input_val = this.doFormat(input_val, type);
       this.innerValue = input_val;
 
-      this.$nextTick(() => {
-        var updated_len = input_val.length;
-        caret_pos = updated_len - original_len + caret_pos;
-        input.srcElement.setSelectionRange(caret_pos, caret_pos);
-      });
+      // this.$nextTick(() => {
+      //   var updated_len = input_val.length;
+      //   caret_pos = updated_len - original_len + caret_pos;
+      //   input.srcElement.setSelectionRange(caret_pos, caret_pos);
+      // });
     },
   },
 };

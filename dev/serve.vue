@@ -10,6 +10,7 @@ export default Vue.extend({
   },
   data: () => ({
     innerValue2: null,
+    innerValue3: null,
   }),
 });
 </script>
@@ -17,7 +18,13 @@ export default Vue.extend({
 <template>
   <div id="app">
     <In v-model="innerValue2"></In>
+
+    <In v-model="innerValue3"></In>
+
+    WTF
+
     {{ innerValue2 }}
+    {{ innerValue3 }}
 
     <hr />
   </div>
