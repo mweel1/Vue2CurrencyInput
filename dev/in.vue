@@ -1,8 +1,6 @@
 <template>
   <div>
     <currency-input v-model="innerValue" ref="currencyInput" />
-
-    <button @click="$refs.currencyInput.forceValue(950.12)">100</button>
   </div>
 </template>
 
